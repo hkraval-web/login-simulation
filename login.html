@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 350px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .google-btn, .apple-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .google-btn img,
+    .apple-btn img {
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .divider:not(:empty)::before {
+      margin-right: .5em;
+    }
+
+    .divider:not(:empty)::after {
+      margin-left: .5em;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .show-password {
+      float: right;
+      font-size: 12px;
+      margin-top: -30px;
+      margin-right: 10px;
+      cursor: pointer;
+      color: #1a73e8;
+    }
+
+    .forgot {
+      font-size: 13px;
+      margin-top: 5px;
+      display: inline-block;
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .sign-in-btn {
+      background-color: #1a73e8;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .sign-in-btn:hover {
+      background-color: #125cc0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Sign in</h2>
+    <div class="google-btn">
+      <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google">
+      Continue as harikrishna
+    </div>
+    <div class="apple-btn">
+      <img src="https://img.icons8.com/ios-filled/50/000000/mac-os.png" alt="Apple">
+      Sign in with Apple
+    </div>
+
+    <div class="divider">or</div>
+
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email or phone" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <span class="show-password" onclick="togglePassword()">Show</span>
+      <br/>
+      <a href="#" class="forgot">Forgot password?</a>
+      <button class="sign-in-btn" type="submit">Sign in</button>
+    </form>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+      }
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Save credentials (insecure: for demo only)
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      localStorage.setItem('savedEmail', email);
+      localStorage.setItem('savedPassword', password);
+
+      // Redirect to LinkedIn
+      window.location.href = 'https://www.linkedin.com';
+    });
+  </script>
+</body>
+</html>
